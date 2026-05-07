@@ -1,0 +1,17 @@
+include: package:leancode_lint/analysis_options.yaml
+
+plugins:
+  app_lint:
+    path: packages/app_lint
+
+linter:
+  rules:
+    unsafe_variance: false
+
+analyzer:
+  errors:
+    todo: ignore
+  exclude:
+    - "**.g.dart"
+    - "**.freezed.dart"
+    - lib/resources/l10n/*

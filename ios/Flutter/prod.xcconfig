@@ -1,0 +1,5 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+BUNDLE_ID_SUFFIX=.prod
+PRODUCT_BUNDLE_IDENTIFIER=pl.leancode.fts.prod
+APP_NAME=FlutterTechSummit PROD

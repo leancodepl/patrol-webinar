@@ -1,0 +1,11 @@
+arb-dir: lib/src/l10n
+template-arb-file: app_en.arb
+output-localization-file: app_localizations.dart
+output-class: AppDesignSystemLocalizations
+synthetic-package: false
+format: true
+nullable-getter: false
+poeditor-project-id: YOUR_POEDITOR_PROJECT_ID
+use-escaping: false
+preferred-supported-locales: [en]
+poeditor-term-prefix: ds

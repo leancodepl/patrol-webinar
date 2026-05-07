@@ -1,0 +1,80 @@
+name: app_design_system
+publish_to: none
+
+environment:
+  sdk: '>=3.11.0 <4.0.0'
+  flutter: '>=3.41.0 <4.0.0'
+
+dependencies:
+  boxy: ^2.2.2
+  collection: ^1.19.1
+  enhanced_gradients: ^2.0.0
+  equatable: ^2.0.8
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_portal: ^1.1.4
+  flutter_svg: ^2.2.4
+  intl: ^0.20.2
+  meta: ^1.17.0
+  vector_graphics: ^1.1.21
+
+dev_dependencies:
+  change_case: ^2.2.0
+  flutter_test:
+    sdk: flutter
+  golden_toolkit: ^0.15.0
+  leancode_lint: ^22.0.0
+  path: ^1.9.1
+  vector_graphics_compiler: ^1.2.0
+
+dependency_overrides:
+  # Flutter 3.41 pins `meta` to `1.17.0`, but the analyzer plugins require `1.18.0`
+  meta: ^1.18.0
+
+flutter:
+  fonts:
+    - family: AppStandardIcons-16
+      fonts:
+        - asset: fonts/AppStandardIcons-16.ttf
+    - family: AppStandardIcons-24
+      fonts:
+        - asset: fonts/AppStandardIcons-24.ttf
+    - family: AppStandardIcons-32
+      fonts:
+        - asset: fonts/AppStandardIcons-32.ttf
+
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter-Medium.otf
+          weight: 500
+        - asset: fonts/Inter-MediumItalic.otf
+          style: italic
+          weight: 500
+        - asset: fonts/Inter-SemiBold.otf
+          weight: 600
+        - asset: fonts/Inter-Bold.otf
+          weight: 700
+        - asset: fonts/Inter-BoldItalic.otf
+          style: italic
+          weight: 700
+    - family: Monoska
+      fonts:
+        - asset: fonts/Monoska.otf
+    - family: Switzer
+      fonts:
+        - asset: fonts/Switzer-Medium.otf
+          weight: 500
+        - asset: fonts/Switzer-Semibold.otf
+          weight: 600
+        - asset: fonts/Switzer-Bold.otf
+          weight: 700
+
+  assets:
+    - path: assets/icons/illustration/
+      transformers:
+        - package: vector_graphics_compiler
+    - path: assets/misc/
+      transformers:
+        - package: vector_graphics_compiler

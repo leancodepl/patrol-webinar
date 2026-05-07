@@ -1,0 +1,18 @@
+{
+  "@@locale": "pl",
+  "navigationBar_tabOfTotal": "Karta {index} z {total}",
+  "switch_optionOfTotal": "Opcja {index} z {total}",
+  "contextMenu_barrierDismissal": "Zamknij",
+  "contextMenuItem_containsMoreItems": "(zawiera więcej opcji)",
+  "textInput_clear": "Wyczyść tekst",
+  "textInput_help": "Pomoc",
+  "topBar_menu": "Menu",
+  "topBar_back": "Wstecz",
+  "snackbar_close": "Zamknij",
+  "banner_close": "Zamknij",
+  "button_loadingSuffix": "{semanticsLabel} (ładowanie)",
+  "button_loading": "ładowanie",
+  "appStepProgress_defaultValueBuilder": "{numerator}/{denominator}",
+  "chip_remove": "Usuń",
+  "field_required": "Wymagane pole"
+}

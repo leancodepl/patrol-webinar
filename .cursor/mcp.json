@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "patrol": {
+      "command": "./.cursor/run-patrol",
+      "env": {
+        "PROJECT_ROOT": ".",
+        "PATROL_FLAGS": "",
+        "SHOW_TERMINAL": "true"
+      }
+    }
+
+  }
+}

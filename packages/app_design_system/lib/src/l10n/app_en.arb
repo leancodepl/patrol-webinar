@@ -1,0 +1,55 @@
+{
+  "@@locale": "en",
+  "navigationBar_tabOfTotal": "Tab {index} of {total}",
+  "@navigationBar_tabOfTotal": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "switch_optionOfTotal": "Option {index} of {total}",
+  "@switch_optionOfTotal": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "contextMenu_barrierDismissal": "Dismiss",
+  "contextMenuItem_containsMoreItems": "(contains more items)",
+  "textInput_clear": "Clear",
+  "textInput_help": "Help",
+  "topBar_menu": "Menu",
+  "topBar_back": "Back",
+  "snackbar_close": "Close",
+  "banner_close": "Close",
+  "button_loadingSuffix": "{semanticsLabel} (loading)",
+  "@button_loadingSuffix": {
+    "placeholders": {
+      "semanticsLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "button_loading": "loading",
+  "appStepProgress_defaultValueBuilder": "{numerator}/{denominator}",
+  "@appStepProgress_defaultValueBuilder": {
+    "placeholders": {
+      "numerator": {
+        "type": "int"
+      },
+      "denominator": {
+        "type": "int"
+      }
+    }
+  },
+  "chip_remove": "Remove",
+  "field_required": "Required field"
+}
