@@ -18,7 +18,11 @@ List<SingleChildWidget> useKratosProviders({
   LoggingHttpClient? httpClient,
 }) {
   final kratosClient = useMemoized(
-    () => KratosClient(baseUri: kratosUri, httpClient: httpClient),
+    () => KratosClient(
+      baseUri: kratosUri,
+      credentialsStorage: flutterSecureCredentialsStorage,
+      httpClient: httpClient,
+    ),
   );
 
   final authCubit = useMemoized(
