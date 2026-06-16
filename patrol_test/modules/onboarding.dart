@@ -9,6 +9,7 @@ final class Onboarding extends Module {
   Future<void> completeOnboarding() async {
     await $(keys.onboarding.continueToAppButton).waitUntilExists();
     await _swipeToNextPage();
+    await _swipeToNextPage();
     await $(keys.onboarding.continueToAppButton).tap();
   }
 

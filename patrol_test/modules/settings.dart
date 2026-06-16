@@ -20,4 +20,8 @@ final class Settings extends Module {
   Future<void> waitForSignUpButton() async {
     await $(keys.settingsPage.signUpButton).waitUntilVisible();
   }
+
+  Future<void> waitForProfileTile() async {
+    await $(keys.settingsPage.accountItem).waitUntilVisible();
+  }
 }
