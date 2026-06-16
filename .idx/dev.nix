@@ -47,7 +47,7 @@
 
       # Runs every time the workspace (re)starts.
       onStart = {
-        openFiles = [ "patrol_test/scenarios/signup_profile_visible_test.dart" ];
+        default.openFiles = [ "patrol_test/scenarios/signup_profile_visible_test.dart" ];
         wait-for-emulator = ''
           export PATH="$HOME/.pub-cache/bin:$PATH"
 
