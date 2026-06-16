@@ -11,7 +11,6 @@
     pkgs.jq
     pkgs.git
     pkgs.curl
-    pkgs.nodejs_20 # provides npm for the Claude Code CLI
   ];
 
   env = { };
@@ -39,9 +38,6 @@
           # Resolve dependencies and pin a patrol_cli compatible with patrol 4.5.0.
           fvm flutter pub get
           fvm dart pub global activate patrol_cli 4.3.1
-
-          # Install Claude Code so you can run `claude` in the workspace terminal.
-          npm install -g @anthropic-ai/claude-code
         '';
       };
 
