@@ -80,11 +80,6 @@ dev_dependencies:
   bloc_test: ^10.0.0
   build_runner: ^2.11.1
   copy_with_extension_gen: ^12.0.0
-  darttools:
-    git:
-      url: git@github.com:leancodepl/leanai.git
-      ref: af2e0887e195df7dbb740a8e7da850d92ba8cd08
-      path: tools/mobile/packages/darttools
   flutter_gen_runner: ^5.4.0
   flutter_launcher_icons: ^0.14.3
   flutter_test:

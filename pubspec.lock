@@ -407,15 +407,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.7"
-  darttools:
-    dependency: "direct dev"
-    description:
-      path: "tools/mobile/packages/darttools"
-      ref: af2e0887e195df7dbb740a8e7da850d92ba8cd08
-      resolved-ref: af2e0887e195df7dbb740a8e7da850d92ba8cd08
-      url: "git@github.com:leancodepl/leanai.git"
-    source: git
-    version: "0.0.1"
   dartx:
     dependency: transitive
     description:
@@ -1667,15 +1658,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.5"
-  project_analyzer:
-    dependency: transitive
-    description:
-      path: "tools/mobile/packages/project_analyzer"
-      ref: af2e0887e195df7dbb740a8e7da850d92ba8cd08
-      resolved-ref: af2e0887e195df7dbb740a8e7da850d92ba8cd08
-      url: "git@github.com:leancodepl/leanai.git"
-    source: git
-    version: "1.0.0"
   protobuf:
     dependency: transitive
     description:
