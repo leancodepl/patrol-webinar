@@ -25,19 +25,22 @@
       # Runs once, when the workspace is first created.
       onCreate = {
         setup = ''
-          # Make pub-cache global executables (fvm, patrol) available in every terminal.
+          # Make pub-global executables (patrol) available in every terminal.
           echo 'export PATH="$HOME/.pub-cache/bin:$PATH"' >> "$HOME/.bashrc"
           export PATH="$HOME/.pub-cache/bin:$PATH"
 
-          # Install fvm and the project-pinned Flutter (3.41.7, read from .fvmrc).
-          # This is what makes the env deterministic — the same SDK every import.
-          dart pub global activate fvm
-          fvm install
-          fvm flutter precache --android
+          # Firebase Studio ships Flutter 3.35.2, but this project requires >=3.41.0.
+          # Upgrade the pre-installed SDK in place to the pinned 3.41.7 (no fvm needed):
+          # it stays on the existing PATH, so plain `flutter` becomes the right version.
+          git config --global --add safe.directory "$HOME/flutter"
+          git -C "$HOME/flutter" fetch --tags --depth 1 origin refs/tags/3.41.7
+          git -C "$HOME/flutter" checkout 3.41.7
+          flutter --version
+          flutter precache --android
 
           # Resolve dependencies and pin a patrol_cli compatible with patrol 4.5.0.
-          fvm flutter pub get
-          fvm dart pub global activate patrol_cli 4.3.1
+          flutter pub get
+          flutter pub global activate patrol_cli 4.3.1
         '';
       };
 
@@ -49,7 +52,7 @@
 
           # Block until the Android emulator is attached and reported by Flutter.
           while true; do
-            DEVICE_ID=$(fvm flutter devices --machine | jq -r '.[0].id // empty')
+            DEVICE_ID=$(flutter devices --machine | jq -r '.[0].id // empty')
             if [[ "$DEVICE_ID" == *emulator* ]]; then
               echo "Emulator ready: $DEVICE_ID"
               break
@@ -59,7 +62,7 @@
           done
 
           # Pre-generate the flavor build config so the first Patrol run is faster.
-          fvm flutter build apk --config-only -t lib/main_tst.dart --flavor tst
+          flutter build apk --config-only -t lib/main_tst.dart --flavor tst
         '';
       };
     };
