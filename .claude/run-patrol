@@ -4,9 +4,19 @@ set -e
 cd "${PROJECT_ROOT:-.}"
 export PROJECT_ROOT=$PWD
 
-# Ensure pub-global executables (fvm, patrol) are found even when this script
-# is spawned by an MCP host that does not source the interactive shell PATH.
-export PATH="$HOME/.pub-cache/bin:$PATH"
+# Ensure the Flutter SDK and pub-global executables are found even when this
+# script is spawned by an MCP host with a minimal PATH (e.g. Gemini in IDX).
+export PATH="$HOME/flutter/bin:$HOME/.pub-cache/bin:$PATH"
+
+# One-time diagnostics for MCP-host spawns (remove once the server is stable).
+{
+  echo "=== run-patrol spawned $(date) PWD=$PWD ==="
+  echo "PATH=$PATH"
+  printf 'dart=%s flutter=%s fvm=%s\n' \
+    "$(command -v dart || echo MISSING)" \
+    "$(command -v flutter || echo MISSING)" \
+    "$(command -v fvm || echo none)"
+} >> /tmp/run-patrol-debug.log 2>&1
 
 if command -v fvm >/dev/null 2>&1; then
   export PATROL_FLUTTER_COMMAND="${PATROL_FLUTTER_COMMAND:-fvm flutter}"
