@@ -1,0 +1,9 @@
+Write a new Patrol E2E test: speaker ↔ session cross-navigation.
+
+Manual test scenario:
+1. Open the app and complete onboarding.
+2. On the home page, open "Marcus Johnson" speaker details page.
+3. On the speaker details page, open his talk "Platform Channels: Bridging Flutter and Native Code".
+4. Verify the session details page opens.
+5. On the session details page, tap the co-speaker "Benjamin Lewis".
+6. Verify "Benjamin Lewis" speaker details page opens.
