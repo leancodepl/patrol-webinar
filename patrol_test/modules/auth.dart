@@ -27,11 +27,6 @@ final class Auth extends Module {
     await $(keys.registerPage.setPasswordButton).scrollTo().tap();
   }
 
-  Future<void> enterVerificationCode(String code) async {
-    await $(keys.verificationPage.codeField).enterText(code);
-    await $(keys.verificationPage.continueButton).scrollTo().tap();
-  }
-
   Future<void> loginWithCredentials({
     required String email,
     required String password,

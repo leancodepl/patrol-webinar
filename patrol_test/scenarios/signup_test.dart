@@ -9,7 +9,7 @@ void main() {
     apiClients,
   ) async {
     final email = apiClients.mailpitClient.generateRandomEmailAddress();
-    const password = 'TestPasswrd123!';
+    const password = 'TestPassword123!';
 
     await openApp($);
     await modules.onboarding.completeOnboarding();
