@@ -6,6 +6,6 @@ class _HomePageKey extends ValueKey<String> {
 
 class HomePageKeys {
   final settingsButton = const _HomePageKey('settingsButton');
-  _HomePageKey speakerAvatar(String speakerId) =>
-      _HomePageKey('speakerAvatar_$speakerId');
+  _HomePageKey speakerAvatar(String speakerName) =>
+      _HomePageKey('speakerAvatar_$speakerName');
 }

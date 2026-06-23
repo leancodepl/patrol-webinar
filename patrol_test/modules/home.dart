@@ -1,5 +1,5 @@
-import 'package:fts/features/home/circle_speaker_avatar.dart';
 import 'package:fts/keys.dart';
+import 'package:patrol/patrol.dart';
 
 import 'module.dart';
 
@@ -18,8 +18,7 @@ final class Home extends Module {
     await $(keys.home.settingsButton).tap();
   }
 
-  Future<void> tapFirstSpeaker() async {
-    await $(CircleSpeakerAvatar).scrollTo();
-    await $(CircleSpeakerAvatar).first.tap();
+  Future<void> tapSpeaker(String speakerName) async {
+    await $(keys.home.speakerAvatar(speakerName)).scrollTo().tap();
   }
 }

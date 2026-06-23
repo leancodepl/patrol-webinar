@@ -22,7 +22,6 @@ class SessionDetailsHeader extends HookWidget {
     final now = useMinuteTimer();
 
     return Column(
-      key: keys.sessionDetails.header,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Wrap(
@@ -31,6 +30,7 @@ class SessionDetailsHeader extends HookWidget {
           spacing: AppSpacings.s12.value,
           children: [
             AppText(
+              key: keys.sessionDetails.header,
               session.title,
               style: AppTextStyles.headlineMedium,
               color: colors.foregroundDefaultPrimary,

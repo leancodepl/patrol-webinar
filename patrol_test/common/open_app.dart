@@ -25,5 +25,12 @@ Future<void> openApp(
     await prefs.setString('most_recent_result', jsonEncode(result));
   }
 
-  await $.pumpWidget(await prepareApp(config: await getPatrolConfig()));
+  // Only the force/suggest-update scenarios need the live version check; for
+  // every other test we keep the guard disabled so its `VersionSupport` query
+  // (which this open-source fork has no backend for) doesn't fail in the logs.
+  final config = await getPatrolConfig(
+    enableForceUpdate: versionSupport != VersionSupportResultDTO.upToDate,
+  );
+
+  await $.pumpWidget(await prepareApp(config: config));
 }
