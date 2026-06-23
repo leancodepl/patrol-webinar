@@ -1,0 +1,2 @@
+Fix the failing Patrol test `patrol_test/scenarios/signup_test.dart`.
+Use the Patrol MCP server to run it. Use the `patrol-tests` skill.
