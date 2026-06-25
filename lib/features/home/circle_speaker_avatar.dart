@@ -18,7 +18,7 @@ class CircleSpeakerAvatar extends StatelessWidget {
         speaker;
 
     return GestureDetector(
-      key: keys.home.speakerAvatar(speaker.id),
+      key: keys.home.speakerAvatar(speaker.fullName),
       onTap: () => SpeakerRoute(speakerId: speaker.id).go(context),
       child: SizedBox(
         width: 126,

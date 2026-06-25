@@ -26,6 +26,10 @@ class App extends HookWidget {
       (config) => config.showDebugOverlay,
     );
 
+    final enableForceUpdate = context.select<AppConfig, bool>(
+      (config) => config.enableForceUpdate,
+    );
+
     final debugPageController = useMemoized(
       () => showDebugOverlay
           ? DebugPageController(
@@ -39,7 +43,7 @@ class App extends HookWidget {
       child: KeyboardDismisser(child: _RouterApp()),
     );
 
-    if (!kIsWeb) {
+    if (!kIsWeb && enableForceUpdate) {
       final forceUpdateController = context.watch<ForceUpdateController>();
 
       app = ForceUpdateGuard(

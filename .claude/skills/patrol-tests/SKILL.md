@@ -65,7 +65,8 @@ When working with Patrol tests:
 ## Action Rules
 
 - Don't use `$.pump`, `waitUntilVisible` or `waitUntilExists` and other wait methods after or before tap, scrollTo and enterText. Patrol handles it automatically. Do this only at the end of the test
-- To find widgets, use only keys
+- To find widgets, use only keys. Never select by widget Type — add a key if one is missing
+- To select a specific item of a data-generated list, parameterize its key by a value the scenario names (not an opaque id), then select that value
 - Don't write try catch blocks unless absolutely necessary
 - After writing test check if it works by running it with MCP server, fix it if it fails
 - If test fails because element was not found, check if it need to be scrolled to in the app code and adjust the test if needed
@@ -109,6 +110,8 @@ When working with Patrol tests:
 
   - ALWAYS prefer using enums or DTOs as the parameter if they already exist
   - Use existing widget properties for parameterized keys
+  - The parameter must be a value the test can supply itself — prefer a property the scenario names over an opaque id
+  - Changing an existing key's parameter so a test can select by a named value is a key change, not a forbidden refactor — just check no other test relies on the old value
   - NEVER assign a parameterized key in the app and then use fixed values for it in the keys file (and vice versa)
   - NEVER create helper methods, use parameterized keys instead
   - When widgets are generated from existing enums or DTOs, always use parameterized keys with the those enum/DTO values as the parameter

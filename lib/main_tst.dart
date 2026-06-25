@@ -6,11 +6,18 @@ final _defaultEndpoint = Uri.parse(
   'https://api.patrol-webinar.test.lncd.pl/api/',
 );
 
-Future<AppConfig> getPatrolConfig() async {
-  return _getTstConfig(showDebugOverlay: false);
+Future<AppConfig> getPatrolConfig({bool enableForceUpdate = false}) async {
+  return _getTstConfig(
+    showDebugOverlay: false,
+    enableForceUpdate: enableForceUpdate,
+  );
 }
 
-AppConfig _getTstConfig({Uri? apiEndpoint, bool showDebugOverlay = true}) {
+AppConfig _getTstConfig({
+  Uri? apiEndpoint,
+  bool showDebugOverlay = true,
+  bool enableForceUpdate = false,
+}) {
   return AppConfig.debug(
     apiUri: apiEndpoint ?? _defaultEndpoint,
     pipeUri: Uri.parse('https://patrol-webinar.test.lncd.pl/leanpipe'),
@@ -19,6 +26,7 @@ AppConfig _getTstConfig({Uri? apiEndpoint, bool showDebugOverlay = true}) {
       'https://api.patrol-webinar.test.lncd.pl/live/health',
     ),
     showDebugOverlay: showDebugOverlay,
+    enableForceUpdate: enableForceUpdate,
   );
 }
 

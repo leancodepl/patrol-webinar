@@ -12,7 +12,7 @@ void main() {
     await modules.onboarding.completeOnboarding();
     await system.grantPermission();
     await modules.home.waitForHomePage();
-    await modules.home.tapFirstSpeaker();
+    await modules.home.tapSpeaker('Marcus Johnson');
     await modules.speakerDetails.waitForSpeakerDetailsPage();
   });
 }
