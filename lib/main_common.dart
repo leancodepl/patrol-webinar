@@ -13,12 +13,17 @@ import 'package:fts/widgets/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:leancode_cubit_utils/leancode_cubit_utils.dart';
 import 'package:logging/logging.dart';
+import 'package:marionette_flutter/marionette_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 Future<void> mainCommon({required AppConfig config}) async {
-  WidgetsFlutterBinding.ensureInitialized();
+  if (kDebugMode) {
+    MarionetteBinding.ensureInitialized();
+  } else {
+    WidgetsFlutterBinding.ensureInitialized();
+  }
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(await prepareApp(config: config));
 }

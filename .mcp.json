@@ -7,6 +7,12 @@
         "PATROL_FLAGS": "",
         "SHOW_TERMINAL": "true"
       }
+    },
+    "marionette": {
+      "command": "./.claude/run-marionette",
+      "env": {
+        "PROJECT_ROOT": "."
+      }
     }
   }
 }

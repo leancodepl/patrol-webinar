@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+set -e
+
+cd "${PROJECT_ROOT:-.}"
+export PROJECT_ROOT=$PWD
+
+if command -v fvm >/dev/null 2>&1; then
+  exec fvm dart run marionette_mcp
+else
+  exec dart run marionette_mcp
+fi
