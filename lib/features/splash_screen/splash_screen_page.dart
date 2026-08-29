@@ -12,6 +12,8 @@ import 'package:fts/resources/assets.gen.dart';
 import 'package:fts/resources/strings.dart';
 import 'package:fts/widgets/widgets.dart';
 
+const _skipOnboarding = true;
+
 class SplashScreenPage extends HookWidget {
   const SplashScreenPage({super.key});
 
@@ -65,7 +67,8 @@ class SplashScreenPage extends HookWidget {
             duration: const Duration(milliseconds: 200),
             onEnd: () {
               final onboardingState = context.read<OnboardingCubit>().state;
-              if (onboardingState == OnboardingState.completed) {
+              if (_skipOnboarding ||
+                  onboardingState == OnboardingState.completed) {
                 const HomeRoute().go(context);
               } else {
                 const OnboardingRoute().go(context);
