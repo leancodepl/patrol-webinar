@@ -74,7 +74,9 @@ android {
             }
         }
 
-        if (System.getenv("CI")) { // CI=true is exported by Codemagic
+        // Keyed off the keystore path itself: GitHub Actions exports CI=true too,
+        // and there the Codemagic variables below are all null.
+        if (System.getenv("CM_KEYSTORE_PATH")) {
             prod {
                 storeFile file(System.getenv("CM_KEYSTORE_PATH"))
                 storePassword System.getenv("CM_KEYSTORE_PASSWORD")

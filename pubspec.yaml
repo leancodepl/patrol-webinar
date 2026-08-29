@@ -8,6 +8,12 @@ environment:
   sdk: '>=3.11.0 <4.0.0'
   flutter: '>=3.41.0 <4.0.0'
 
+# One resolution for the whole repo, so the local packages' dev_dependencies are
+# available to `flutter analyze` after a single `pub get`.
+workspace:
+  - packages/app_design_system
+  - packages/app_lint
+
 dependencies:
   animated_text_kit: ^4.3.0
   app_design_system:
@@ -81,11 +87,6 @@ dev_dependencies:
   bloc_test: ^10.0.0
   build_runner: ^2.11.1
   copy_with_extension_gen: ^12.0.0
-  darttools:
-    git:
-      url: git@github.com:leancodepl/leanai.git
-      ref: af2e0887e195df7dbb740a8e7da850d92ba8cd08
-      path: tools/mobile/packages/darttools
   flutter_gen_runner: ^5.4.0
   flutter_launcher_icons: ^0.14.3
   flutter_test:
@@ -99,11 +100,12 @@ dev_dependencies:
   marionette_mcp: ^0.6.0
   meta: ^1.18.0
   mocktail: ^1.0.4
-  patrol: ^4.6.1
-  patrol_mcp: ^0.1.4
+  # patrol 4.8.0 pairs with patrol_cli 4.6.0; 4.9.0 needs 4.7.0.
+  patrol: 4.8.0
+  patrol_cli: 4.6.0
+  patrol_mcp: 0.2.0
 
 dependency_overrides:
-  mcp_dart: 2.1.0
   # Flutter 3.41 pins `meta` to `1.17.0`, but the analyzer plugins require `1.18.0`
   meta: ^1.18.0
 

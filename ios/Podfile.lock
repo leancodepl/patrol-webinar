@@ -217,7 +217,7 @@ SPEC CHECKSUMS:
   location: 155caecf9da4f280ab5fe4a55f94ceccfab838f8
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
   passkeys_darwin: 0a09d3b26cea8de1ec3bb8f8c7c159981f63bbc7
-  patrol: cea8074f183a2a4232d0ebd10569ae05149ada42
+  patrol: 09773d9cd563ec54230813755b3231b2e8252aac
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   quick_actions_ios: 500fcc11711d9f646739093395c4ae8eec25f779
   sensors_plus: 6a11ed0c2e1d0bd0b20b4029d3bad27d96e0c65b

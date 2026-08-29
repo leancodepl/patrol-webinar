@@ -1,5 +1,6 @@
 name: app_design_system
 publish_to: none
+resolution: workspace
 
 environment:
   sdk: '>=3.11.0 <4.0.0'
@@ -28,10 +29,6 @@ dev_dependencies:
   leancode_lint: ^22.0.0
   path: ^1.9.1
   vector_graphics_compiler: ^1.2.0
-
-dependency_overrides:
-  # Flutter 3.41 pins `meta` to `1.17.0`, but the analyzer plugins require `1.18.0`
-  meta: ^1.18.0
 
 flutter:
   fonts:

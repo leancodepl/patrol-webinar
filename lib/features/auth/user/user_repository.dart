@@ -8,7 +8,11 @@ class UserRepository {
       key: 'get-user',
       queryFn: () async {
         final result = await _kratosClient.getUserProfile();
-        return result;
+        // whoami is an idempotent GET, safe to repeat.
+        if (result is UserProfileData) {
+          return result;
+        }
+        return _kratosClient.getUserProfile();
       },
       onSuccess: (userProfile) => _cachedUser = userProfile,
     );

@@ -47,7 +47,15 @@ final class Auth extends Module {
   }
 
   Future<void> logout() async {
+    // The settings list mounts only after the profile fetch returns; its
+    // items do not exist in the tree until then.
+    await $(
+      keys.menu.logoutItem,
+    ).waitUntilExists(timeout: const Duration(seconds: 30));
     await $(keys.menu.logoutItem).scrollTo().tap();
+    // Logging out round-trips to Kratos; the signed-out settings page is its
+    // post-condition.
+    await $(keys.settingsPage.signUpButton).waitUntilVisible();
   }
 
   Future<void> waitForLoginPage() async {

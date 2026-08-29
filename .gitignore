@@ -41,9 +41,9 @@ devtools_options.yaml
 .pub-cache/
 .pub/
 /build/
+lib/generated_plugin_registrant.dart
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
@@ -54,8 +54,11 @@ mason-lock.json
 
 # Patrol related
 integration_test/patrol_test_bundle.dart
+/test_bundle.dart
 patrol_test/test_bundle.dart
 .patrol.env
+/test-results/
+/playwright-report/
 
 # golden_toolkit golden tests failures
 failures/
@@ -65,3 +68,6 @@ failures/
 
 # Missing l10n translations in arb files
 untranslated_messages.txt
+
+# Kotlin compiler session files, written by every local Gradle run
+android/.kotlin/

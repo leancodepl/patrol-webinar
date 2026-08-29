@@ -8,6 +8,9 @@ import 'package:http/http.dart' as http;
 class InterceptedHttpClient extends http.BaseClient {
   final http.Client _inner = createHttpClient();
 
+  // Bounds time to response headers, not a streamed body's read.
+  static const _responseTimeout = Duration(seconds: 10);
+
   final responseInterceptors = <ResponseInterceptor>[];
   final requestInterceptors = <RequestInterceptor>[];
 
@@ -22,7 +25,9 @@ class InterceptedHttpClient extends http.BaseClient {
       interceptedRequest = modifiedRequest;
     }
 
-    final response = await _inner.send(interceptedRequest);
+    final response = await _inner
+        .send(interceptedRequest)
+        .timeout(_responseTimeout);
 
     var interceptedResponse = response;
 

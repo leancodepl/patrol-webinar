@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:fts/main_common.dart';
 import 'package:fts/main_tst.dart';
 import 'package:leancode_force_update/data/contracts/contracts.dart';
@@ -32,5 +33,9 @@ Future<void> openApp(
     enableForceUpdate: versionSupport != VersionSupportResultDTO.upToDate,
   );
 
+  // The app's init claims FlutterError.onError for its logger; the binding's
+  // handler must stay in charge under test or failures never reach the runner.
+  final onError = FlutterError.onError;
   await $.pumpWidget(await prepareApp(config: config));
+  FlutterError.onError = onError;
 }

@@ -10,6 +10,11 @@ final class Settings extends Module {
   }
 
   Future<void> openAccount() async {
+    // The settings list mounts only after the profile fetch returns; its
+    // items do not exist in the tree until then.
+    await $(
+      keys.settingsPage.accountItem,
+    ).waitUntilExists(timeout: const Duration(seconds: 30));
     await $(keys.settingsPage.accountItem).tap();
   }
 

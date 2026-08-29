@@ -2,79 +2,43 @@
 
 Sample conference app used for Patrol webinars and live streams. The project shows how to write E2E tests for realistic Flutter user flows: onboarding, login, agenda browsing, speakers, session details, and native interactions such as permissions or maps.
 
-## Running the App
+## Setup
 
-Requirements:
-
-- Flutter matching the version range from `pubspec.yaml` (`>=3.41.0 <4.0.0`)
-- Android Studio or Xcode with a running emulator/simulator
-
-Install dependencies:
+Requirements: [fvm](https://fvm.app), Android Studio or Xcode with a running emulator/simulator.
 
 ```sh
-flutter pub get
+fvm install
+fvm flutter pub get
 ```
 
-Run the development flavor:
+The packages under `packages/` are members of a pub workspace, so that one `pub get` resolves them too, their `dev_dependencies` included.
+
+Run the app:
 
 ```sh
-flutter run --flavor dev -t lib/main_dev.dart
+fvm flutter run --flavor dev -t lib/main_dev.dart   # dev
+fvm flutter run --flavor tst -t lib/main_tst.dart   # tst, the flavor Patrol uses
 ```
 
-Run the test flavor, which is also used by Patrol:
+The app talks to a LeanCode staging environment (`*.patrol-webinar.test.lncd.pl`): CQRS API, Kratos for auth, LeanPipe for push.
 
-```sh
-flutter run --flavor tst -t lib/main_tst.dart
-```
+## Google Maps API key
 
-## Google Maps API Key
-
-The app uses Google Maps, so before opening map screens you need to provide an API key with the Google Maps SDK enabled for Android and/or iOS.
-
-Android: replace `<YOUR_API_KEY>` in `android/app/build.gradle` for the `dev` and `tst` flavors:
-
-```gradle
-manifestPlaceholders = [
-    appLabel: "FTS DEV",
-    authHostName: "auth.patrol-webinar.test.lncd.pl",
-    googleMapsApiKey: "<YOUR_API_KEY>"
-]
-```
-
-iOS: replace `<YOUR_API_KEY>` in `ios/Runner/AppDelegate.swift`:
-
-```swift
-GMSServices.provideAPIKey("<YOUR_API_KEY>")
-```
+Map screens need a key with the Google Maps SDK enabled. Android: `manifestPlaceholders.googleMapsApiKey` in `android/app/build.gradle` for the `dev` and `tst` flavors. iOS: `GMSServices.provideAPIKey` in `ios/Runner/AppDelegate.swift`. Both currently hold `<YOUR_API_KEY>`; map screens render blank until a real key is supplied.
 
 Do not commit a real key if the repository is public or shared outside a trusted team.
 
-## Running Patrol Tests
+## Patrol tests
 
-First, install the Patrol CLI:
-
-```sh
-dart pub global activate patrol_cli
-```
-
-Run all tests:
+`patrol_cli` resolves from the lockfile, so run it through the project:
 
 ```sh
-patrol test
+fvm dart run patrol_cli:main test                                           # everything
+fvm dart run patrol_cli:main test -t patrol_test/scenarios/signup_test.dart  # one scenario
 ```
 
-Run a single scenario:
+Single test runs during development should go through the Patrol MCP server rather than the CLI — it keeps a live session, so the native tree and screenshots stay available when a test fails, and re-runs skip the rebuild.
 
-```sh
-patrol test -t patrol_test/scenarios/login_logout_test.dart
-```
+Some scenarios need credentials via `--dart-define`, declared in `patrol_test/common/env_variables.dart`: `EMAIL`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `DOMAIN_NAME`, `MAILPIT_LOGIN`, `MAILPIT_PASSWORD`, `MAILBOX_API_KEY`. Keep them in a local `.patrol.env`, which is gitignored.
 
-Some scenarios require data passed through `--dart-define`, for example a test account or Mailpit access:
-
-```sh
-patrol test -t patrol_test/scenarios/login_logout_test.dart \
-  --dart-define=EMAIL="user@example.com" \
-  --dart-define=PASSWORD="password"
-```
-
-Variables used by the tests include `EMAIL`, `PASSWORD`, `FIRSTNAME`, `LASTNAME`, `DOMAIN_NAME`, `MAILPIT_LOGIN`, `MAILPIT_PASSWORD`, and `MAILBOX_API_KEY`.
+Test architecture — modules, `System`, api clients — is documented in `.claude/skills/patrol-tests/SKILL.md`.
