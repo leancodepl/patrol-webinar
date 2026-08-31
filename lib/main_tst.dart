@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:fts/common/config/app_config.dart';
 import 'package:fts/main_common.dart';
 
@@ -31,8 +30,5 @@ AppConfig _getTstConfig({
 }
 
 Future<void> main() {
-  // Early initialization required by overrideApiEndpoint's SharedPreferences
-  WidgetsFlutterBinding.ensureInitialized();
-
   return mainCommon(config: _getTstConfig());
 }
