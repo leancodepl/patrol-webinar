@@ -1,0 +1,4 @@
+We want E2E coverage for rating a talk. Explore the app with Marionette to
+figure out how the flow actually works — for both a logged-out and a
+logged-in user — write down what you find as a short spec, then use Patrol
+MCP to turn it into a passing test.
