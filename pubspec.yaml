@@ -5,8 +5,9 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.11.0 <4.0.0'
-  flutter: '>=3.41.0 <4.0.0'
+  sdk: '>=3.11.0 <3.12.0'
+  # 3.42 ships `IconData` as a final class, which the design system extends.
+  flutter: '>=3.41.0 <3.42.0'
 
 # One resolution for the whole repo, so the local packages' dev_dependencies are
 # available to `flutter analyze` after a single `pub get`.
